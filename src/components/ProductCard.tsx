@@ -1,15 +1,11 @@
-
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { toast } from 'sonner';
-import { useTheme } from '@/contexts/ThemeContext';
 import { cn } from '@/lib/utils';
 
 const ProductCard = ({ id, name, category, price, imageSrc, description }) => {
   const { addToCart } = useCart();
-  const { theme } = useTheme();
-  const isLightMode = theme === 'light';
   
   const handleAddToCart = (e) => {
     e.preventDefault(); // Prevent navigation
@@ -31,12 +27,7 @@ const ProductCard = ({ id, name, category, price, imageSrc, description }) => {
   return (
     <Link
       to={`/product/${id}`}
-      className={cn(
-        "neo-glass group relative rounded-lg p-4 overflow-hidden flex flex-col h-full transition-all duration-300",
-        isLightMode 
-          ? "border border-gray-200 hover:border-neon-blue/50 shadow-sm hover:shadow-md" 
-          : "border border-white/10 hover:border-neon-blue/30"
-      )}
+      className="neo-glass group relative rounded-lg p-4 overflow-hidden flex flex-col h-full transition-all duration-300 border border-white/10 hover:border-neon-blue/30"
     >
       <div className="aspect-w-3 aspect-h-2 mb-4 overflow-hidden rounded-md">
         <img
@@ -46,17 +37,11 @@ const ProductCard = ({ id, name, category, price, imageSrc, description }) => {
         />
       </div>
       
-      <h3 className={cn(
-        "text-lg font-medium mb-2 group-hover:text-neon-blue transition-colors duration-300",
-        isLightMode ? "text-gray-800" : "text-white"
-      )}>
+      <h3 className="text-lg font-medium mb-2 group-hover:text-neon-blue transition-colors duration-300 text-white">
         {name}
       </h3>
       
-      <p className={cn(
-        "text-sm flex-grow",
-        isLightMode ? "text-gray-700" : "text-white/60"
-      )}>
+      <p className="text-sm flex-grow text-white/60">
         {description}
       </p>
       
@@ -67,10 +52,7 @@ const ProductCard = ({ id, name, category, price, imageSrc, description }) => {
         
         <button
           onClick={handleAddToCart}
-          className={cn(
-            "rounded-full p-2 transition-colors text-neon-blue",
-            isLightMode ? "bg-neon-blue/5 hover:bg-neon-blue/15" : "bg-neon-blue/10 hover:bg-neon-blue/20"
-          )}
+          className="rounded-full p-2 transition-colors text-neon-blue bg-neon-blue/10 hover:bg-neon-blue/20"
           aria-label="Add to cart"
         >
           <ShoppingCart size={18} />
