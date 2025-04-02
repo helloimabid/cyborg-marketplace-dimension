@@ -1,0 +1,143 @@
+
+:root {
+  --cursor-main: url('/cursor.svg'), auto;
+  --cursor-pointer: url('/cursor-pointer.svg'), pointer;
+}
+
+/* Custom cursor */
+html, body {
+  cursor: var(--cursor-main);
+}
+
+a, button, [role="button"], input[type="submit"] {
+  cursor: var(--cursor-pointer);
+}
+
+/* Add cursor trail effect */
+.cursor-trail {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  z-index: 9999;
+  background-color: rgba(30, 174, 219, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  transition: width 0.2s, height 0.2s, opacity 0.5s;
+}
+
+/* Light mode cursor trail */
+.light .cursor-trail {
+  background-color: rgba(30, 174, 219, 0.7);
+  mix-blend-mode: multiply;
+}
+
+/* Enhanced scanline effect */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 2147483648;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+}
+
+.light .scanline {
+  opacity: 0.05;
+  mix-blend-mode: color-burn;
+}
+
+/* Add cursor trail JavaScript code */
+document.addEventListener('DOMContentLoaded', function() {
+  // Create meta theme-color if it doesn't exist
+  if (!document.querySelector('meta[name="theme-color"]')) {
+    const metaTheme = document.createElement('meta');
+    metaTheme.setAttribute('name', 'theme-color');
+    metaTheme.setAttribute('content', 
+      document.documentElement.classList.contains('light') ? '#ffffff' : '#0f0f0f'
+    );
+    document.head.appendChild(metaTheme);
+  }
+
+  const maxTrails = 12;
+  const trailContainer = document.createElement('div');
+  trailContainer.style.position = 'fixed';
+  trailContainer.style.top = '0';
+  trailContainer.style.left = '0';
+  trailContainer.style.width = '100%';
+  trailContainer.style.height = '100%';
+  trailContainer.style.pointerEvents = 'none';
+  trailContainer.style.zIndex = '9999';
+  document.body.appendChild(trailContainer);
+
+  const trails = [];
+  for (let i = 0; i < maxTrails; i++) {
+    const trail = document.createElement('div');
+    trail.classList.add('cursor-trail');
+    trail.style.opacity = 0;
+    trailContainer.appendChild(trail);
+    trails.push({
+      element: trail,
+      x: 0,
+      y: 0,
+      size: 5 + (maxTrails - i) / 2,
+      active: false,
+      delay: i * 30
+    });
+  }
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let isMoving = false;
+  let moveTimeout;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    isMoving = true;
+    
+    clearTimeout(moveTimeout);
+    moveTimeout = setTimeout(() => {
+      isMoving = false;
+    }, 100);
+  });
+
+  function updateTrails() {
+    const isLightMode = document.documentElement.classList.contains('light');
+    
+    for (let i = 0; i < trails.length; i++) {
+      const trail = trails[i];
+      
+      if (isMoving) {
+        setTimeout(() => {
+          trail.x = mouseX;
+          trail.y = mouseY;
+          trail.active = true;
+          trail.element.style.opacity = isLightMode 
+            ? 0.4 - (i / trails.length * 0.3)
+            : 0.7 - (i / trails.length * 0.5);
+        }, trail.delay);
+      } else {
+        trail.active = false;
+        trail.element.style.opacity = 0;
+      }
+      
+      if (trail.active) {
+        trail.element.style.width = `${trail.size}px`;
+        trail.element.style.height = `${trail.size}px`;
+        trail.element.style.left = `${trail.x}px`;
+        trail.element.style.top = `${trail.y}px`;
+      }
+    }
+    
+    requestAnimationFrame(updateTrails);
+  }
+  
+  updateTrails();
+});

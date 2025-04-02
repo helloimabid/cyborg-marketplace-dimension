@@ -1,0 +1,194 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark mode variables (default) */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neon-purple/50 rounded-full;
+  }
+
+  /* Custom Cursor - Fixed to use center point for clicking */
+  * {
+    cursor: url('/cursor.svg') 16 16, auto;
+  }
+
+  a, button, [role="button"], input[type="submit"], [type="checkbox"], [type="radio"] {
+    cursor: url('/cursor-pointer.svg') 16 16, pointer;
+  }
+}
+
+@layer components {
+  .neo-glass {
+    @apply backdrop-blur-md bg-black/40 border border-white/10 shadow-[0_8px_32px_rgba(30,174,219,0.2)];
+  }
+  
+  .neon-border {
+    @apply border border-neon-blue rounded relative;
+    box-shadow: 0 0 5px rgba(30, 174, 219, 0.5), 0 0 10px rgba(30, 174, 219, 0.3) inset;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 5px currentColor, 0 0 10px rgba(30, 174, 219, 0.5);
+  }
+  
+  .neon-button {
+    @apply bg-transparent py-2.5 px-5 border border-neon-blue text-neon-blue font-medium text-sm leading-normal rounded transition-all duration-300 neo-glass;
+    box-shadow: 0 0 10px rgba(30, 174, 219, 0.3), 0 0 20px rgba(30, 174, 219, 0.2) inset;
+  }
+  
+  .neon-button:hover {
+    @apply bg-neon-blue/10;
+    box-shadow: 0 0 15px rgba(30, 174, 219, 0.5), 0 0 30px rgba(30, 174, 219, 0.3) inset;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-neon-gradient animate-gradient-shift;
+    background-size: 300% 300%;
+  }
+
+  .scanline {
+    @apply pointer-events-none fixed inset-0 h-screen w-screen overflow-hidden z-[100] opacity-10;
+  }
+  
+  .scanline::before {
+    @apply content-[''] absolute w-full h-[1px] bg-white top-0 left-0 animate-scanline;
+  }
+
+  .hud-border {
+    @apply relative rounded-md overflow-hidden;
+    &::before {
+      content: '';
+      @apply absolute top-0 left-0 w-full h-full pointer-events-none;
+      background: 
+        linear-gradient(90deg, transparent 2rem, var(--tw-border-color) 2rem, var(--tw-border-color) calc(2rem + 1px), transparent calc(2rem + 1px)) top left/100% 1px no-repeat,
+        linear-gradient(90deg, transparent 1rem, var(--tw-border-color) 1rem, var(--tw-border-color) calc(1rem + 1px), transparent calc(1rem + 1px)) bottom left/100% 1px no-repeat,
+        linear-gradient(0deg, transparent 2rem, var(--tw-border-color) 2rem, var(--tw-border-color) calc(2rem + 1px), transparent calc(2rem + 1px)) top left/1px 100% no-repeat,
+        linear-gradient(0deg, transparent 1rem, var(--tw-border-color) 1rem, var(--tw-border-color) calc(1rem + 1px), transparent calc(1rem + 1px)) top right/1px 100% no-repeat;
+    }
+  }
+
+  .circuit-bg {
+    background-image: 
+      radial-gradient(rgba(30, 174, 219, 0.1) 2px, transparent 2px),
+      radial-gradient(rgba(30, 174, 219, 0.07) 2px, transparent 2px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    animation: circuit-shift 120s linear infinite;
+  }
+
+  @keyframes circuit-shift {
+    0% {
+      background-position: 0 0, 25px 25px;
+    }
+    100% {
+      background-position: 1000px 1000px, 1025px 1025px;
+    }
+  }
+  
+  /* New animations for loading page */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@keyframes pulse-slow {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes scanline {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.5s forwards;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s infinite;
+  }
+}
+
+/* Particle Canvas */
+canvas.particles {
+  @apply fixed top-0 left-0 w-full h-full pointer-events-none z-0;
+}
+
+/* Handle transition between pages */
+.page-transition-enter {
+  @apply opacity-0;
+}
+
+.page-transition-enter-active {
+  @apply opacity-100 transition-opacity duration-300;
+}
+
+.page-transition-exit {
+  @apply opacity-100;
+}
+
+.page-transition-exit-active {
+  @apply opacity-0 transition-opacity duration-300;
+}

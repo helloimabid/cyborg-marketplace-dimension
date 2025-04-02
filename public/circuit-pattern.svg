@@ -1,0 +1,26 @@
+
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 10H30V30H10V10Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <path d="M40 10H60V30H40V10Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <path d="M70 10H90V30H70V10Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <path d="M10 40H30V60H10V40Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <path d="M40 40H60V60H40V40Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <path d="M70 40H90V60H70V40Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <path d="M10 70H30V90H10V70Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <path d="M40 70H60V90H40V70Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <path d="M70 70H90V90H70V70Z" stroke="#1EAEDB" stroke-opacity="0.1" stroke-width="1" />
+  <circle cx="10" cy="10" r="2" fill="#1EAEDB" fill-opacity="0.2" />
+  <circle cx="30" cy="30" r="2" fill="#1EAEDB" fill-opacity="0.2" />
+  <circle cx="50" cy="50" r="2" fill="#1EAEDB" fill-opacity="0.2" />
+  <circle cx="70" cy="70" r="2" fill="#1EAEDB" fill-opacity="0.2" />
+  <circle cx="90" cy="90" r="2" fill="#1EAEDB" fill-opacity="0.2" />
+  <line x1="30" y1="10" x2="40" y2="10" stroke="#1EAEDB" stroke-opacity="0.1" />
+  <line x1="60" y1="10" x2="70" y2="10" stroke="#1EAEDB" stroke-opacity="0.1" />
+  <line x1="30" y1="30" x2="40" y2="30" stroke="#1EAEDB" stroke-opacity="0.1" />
+  <line x1="60" y1="30" x2="70" y2="30" stroke="#1EAEDB" stroke-opacity="0.1" />
+  <line x1="10" y1="30" x2="10" y2="40" stroke="#1EAEDB" stroke-opacity="0.1" />
+  <line x1="30" y1="30" x2="30" y2="40" stroke="#1EAEDB" stroke-opacity="0.1" />
+  <line x1="50" y1="30" x2="50" y2="40" stroke="#1EAEDB" stroke-opacity="0.1" />
+  <line x1="70" y1="30" x2="70" y2="40" stroke="#1EAEDB" stroke-opacity="0.1" />
+  <line x1="90" y1="30" x2="90" y2="40" stroke="#1EAEDB" stroke-opacity="0.1" />
+</svg>
