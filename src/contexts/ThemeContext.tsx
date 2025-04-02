@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface ThemeContextType {
@@ -17,7 +16,6 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   // Apply dark theme classes
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    document.documentElement.classList.remove('light');
     
     // Apply theme class to body element as well for broader styling options
     document.body.className = theme;
