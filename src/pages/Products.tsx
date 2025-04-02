@@ -33,7 +33,7 @@ const products = [
     name: 'CardioSync Pro',
     category: 'Cardiovascular',
     price: 32750,
-    imageSrc: 'https://images.unsplash.com/photo-1634326599007-a108c3f5805e?q=80&w=1528&auto=format&fit=crop',
+    imageSrc: 'https://i.ibb.co.com/8Lk6KjDM/Chat-GPT-Image-Apr-2-2025-04-54-34-PM.png',
     description: 'Artificial heart with nanobots for continuous maintenance and 150 year operational lifespan.',
     rating: 4.8,
     tags: ['medical', 'premium', 'longevity']
