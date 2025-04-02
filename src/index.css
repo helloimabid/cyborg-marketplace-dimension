@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,7 +39,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border-color;
   }
   
   html {
@@ -74,6 +73,8 @@
     cursor: url('/cursor-pointer.svg') 16 16, pointer;
   }
 }
+
+/* ... keep existing code (component classes and other styles) */
 
 @layer components {
   .neo-glass {
