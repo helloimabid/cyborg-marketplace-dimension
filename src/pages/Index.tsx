@@ -165,7 +165,7 @@ const Index = () => {
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 transform -translate-x-1/2 animate-bounce">
           <ChevronDown className="text-neon-blue h-8 w-8" />
         </div>
       </section>
