@@ -97,14 +97,29 @@ const Navbar = () => {
           </div>
           
           <div className="flex items-center md:hidden space-x-4">
-            <Link to="/checkout" className="p-2 transition-colors relative text-white/70 hover:text-neon-blue">
+{/*             <Link to="/checkout" className="p-2 transition-colors relative text-white/70 hover:text-neon-blue">
               <ShoppingCart size={20} />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center bg-neon-blue text-white text-xs rounded-full">
                   {totalItems}
                 </span>
               )}
-            </Link>
+            </Link> */}
+             {isAuthenticated ? (
+              <Link to="/profile">
+                <CyberButton size="sm" className="flex items-center gap-2">
+                  <User size={16} />
+                  <span>Profile</span>
+                </CyberButton>
+              </Link>
+            ) : (
+              <Link to="/auth">
+                <CyberButton size="sm" className="flex items-center gap-2">
+                  <User size={16} />
+                  <span>Sign In</span>
+                </CyberButton>
+              </Link>
+            )}
             
             <button
               onClick={() => setIsOpen(!isOpen)}
