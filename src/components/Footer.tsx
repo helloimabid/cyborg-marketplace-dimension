@@ -78,6 +78,9 @@ const Footer = () => {
           <p className="text-white/40 text-sm mb-4 md:mb-0">
             © 2100 CYBERTECH. All rights reserved.
           </p>
+          <Link to="https://github.com/helloimabid" className="text-neon-blue/40 text-sm mb-4 md:mb-0">
+            Developed by : Sadman Abid
+          </Link>
           <div className="text-white/40 text-sm flex space-x-6">
             <Link to="/neural-interface" className="hover:text-neon-blue transition-colors">
               Neural Interface
