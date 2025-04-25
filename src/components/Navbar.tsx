@@ -105,7 +105,7 @@ const Navbar = () => {
                 </span>
               )}
             </Link> */}
-             {isAuthenticated ? (
+{/*              {isAuthenticated ? (
               <Link to="/profile">
                 <CyberButton size="sm" className="flex items-center gap-2">
                   <User size={16} />
@@ -119,7 +119,7 @@ const Navbar = () => {
                   <span>Sign In</span>
                 </CyberButton>
               </Link>
-            )}
+            )} */}
             
             <button
               onClick={() => setIsOpen(!isOpen)}
