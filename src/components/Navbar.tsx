@@ -79,7 +79,7 @@ const Navbar = () => {
               )}
             </Link> */}
             
-            {isAuthenticated ? (
+{/*             {isAuthenticated ? (
               <Link to="/profile">
                 <CyberButton size="sm" className="flex items-center gap-2">
                   <User size={16} />
@@ -93,7 +93,7 @@ const Navbar = () => {
                   <span>Sign In</span>
                 </CyberButton>
               </Link>
-            )}
+            )} */}
           </div>
           
           <div className="flex items-center md:hidden space-x-4">
