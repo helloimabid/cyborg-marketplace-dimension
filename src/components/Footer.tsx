@@ -67,7 +67,7 @@ const Footer = () => {
                 placeholder="Your email" 
                 className="w-full py-3 px-4 rounded-sm focus:outline-none focus:border-neon-blue bg-white/5 border border-neon-blue/30 text-white/80"
               />
-              <button className="absolute right-2 top-2.5 text-neon-blue hover:text-neon-purple transition-colors">
+              <button className="absolute right-2 top-4 text-neon-blue hover:text-neon-purple transition-colors">
                 <Send size={18} />
               </button>
             </div>
