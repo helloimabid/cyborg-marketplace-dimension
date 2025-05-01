@@ -11,7 +11,7 @@ const userData = {
   email: 'user@cybertech.future',
   firstName: 'Shakamal',
   lastName: 'Sajid',
-  avatar: 'https://scontent.fdac24-5.fna.fbcdn.net/v/t39.30808-6/484229009_969213428527396_9025203486548390394_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGC1MI-jJbtcrhcmAWdnFeRRg8swhujEF9GDyzCG6MQX1ysEqG7qTD0CUzbwwD0e5RtX_zFe36L7IsSQozCMQ1s&_nc_ohc=wHKjuiLNgiAQ7kNvgGrwZz9&_nc_oc=Adm8nsEVRNBbeoWn51u-Ad4JEpsUMzTcmoLTdi-DnwwlCKqbWO4Ax8Jvj1qpgjB_8Y4&_nc_zt=23&_nc_ht=scontent.fdac24-5.fna&_nc_gid=E_28mrruNfNI6VDqgGzyew&oh=00_AYHfRXS3Nxdi7sekEjTsVf3-x3NtRWxqAbbQIUq_kpnwog&oe=67F1BDFA',
+  avatar: 'https://i.ibb.co.com/v4zGd7rS/484038273-968703438578395-6892533562389661134-n-1.jpg',
   neuralId: 'NEO-78453-XB',
   memberSince: '2099-07-15',
   enhancementLevel: 'Tier 3',
