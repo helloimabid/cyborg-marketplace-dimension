@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import Index from '@/pages/Index';
 import Products from '@/pages/Products';
@@ -26,7 +26,6 @@ import LoadingPage from '@/components/LoadingPage';
 import { AnimatePresence, motion } from "framer-motion";
 import PageTransition from '@/components/PageTransition';
 
-
 // Protected route component
 const ProtectedRoute = ({ element }) => {
   const isAuthenticated = localStorage.getItem('cybertech_user') !== null;
@@ -41,6 +40,7 @@ const ProtectedRoute = ({ element }) => {
 // Main application component
 const AppContent = () => {
   const { isLoading } = useTheme();
+  const location = useLocation();
 
   // Prevent scrolling when loading page is shown
   useEffect(() => {
@@ -61,47 +61,44 @@ const AppContent = () => {
 
   return (
     <CartProvider>
-      <Router>
-        <Navbar />
-        <Toaster position="bottom-center" />
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={location.pathname}
-            className="min-h-screen pb-24" // Increased bottom padding to account for the nav
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          >
-            <PageTransition>
-              <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Index />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:category" element={<Products />} />
-                <Route path="/product/:productId" element={<ProductView />} />
-                <Route path="/product-configure/:productId" element={<ProductConfigure />} />
-                <Route path="/checkout" element={<ProtectedRoute element={<Checkout />} />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/search" element={<SearchResults />} />
-                <Route path="/auth" element={<Auth />} />
-                <Route path="/checkout" element={<Checkout />} />
-                {/* Legal Pages */}
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/cookies" element={<Cookies />} />
-                <Route path="/licensing" element={<Licensing />} />
-                {/* Additional Pages */}
-                <Route path="/neural-interface" element={<NeuralInterface />} />
-                <Route path="/security" element={<Security />} />
-              </Routes>
-            </PageTransition>
-          </motion.div>
-        </AnimatePresence>
-        <BottomNav />
-        <Footer />
-      </Router>
+      <Navbar />
+      <Toaster position="bottom-center" />
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={location.pathname}
+          className="min-h-screen pb-24" // Increased bottom padding to account for the nav
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+        >
+          <PageTransition>
+            <Routes location={location}>
+              <Route path="/" element={<Index />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:category" element={<Products />} />
+              <Route path="/product/:productId" element={<ProductView />} />
+              <Route path="/product-configure/:productId" element={<ProductConfigure />} />
+              <Route path="/checkout" element={<ProtectedRoute element={<Checkout />} />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/search" element={<SearchResults />} />
+              <Route path="/auth" element={<Auth />} />
+              {/* Legal Pages */}
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/cookies" element={<Cookies />} />
+              <Route path="/licensing" element={<Licensing />} />
+              {/* Additional Pages */}
+              <Route path="/neural-interface" element={<NeuralInterface />} />
+              <Route path="/security" element={<Security />} />
+            </Routes>
+          </PageTransition>
+        </motion.div>
+      </AnimatePresence>
+      <BottomNav />
+      <Footer />
     </CartProvider>
   );
 };
@@ -109,7 +106,9 @@ const AppContent = () => {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <Router>
+        <AppContent />
+      </Router>
     </ThemeProvider>
   );
 }
