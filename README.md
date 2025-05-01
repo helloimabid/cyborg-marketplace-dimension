@@ -69,10 +69,7 @@ The application includes custom-built UI components:
 
 ```bash
 # Clone the repository
-git clone https://your-repository-url.git
-
-# Navigate to project directory
-cd cybertech-2100
+[https://github.com/helloimabid/cyborg-marketplace-dimension.git]
 
 # Install dependencies
 npm install
