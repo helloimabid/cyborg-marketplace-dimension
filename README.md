@@ -69,7 +69,7 @@ The application includes custom-built UI components:
 
 ```bash
 # Clone the repository
-[https://github.com/helloimabid/cyborg-marketplace-dimension.git]
+[(https://github.com/helloimabid/cyborg-marketplace-dimension.git)]
 
 # Install dependencies
 npm install
