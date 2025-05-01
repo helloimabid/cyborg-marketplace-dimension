@@ -57,29 +57,7 @@ const Navbar = () => {
           </nav>
           
           <div className="hidden md:flex items-center space-x-4">
-            <form onSubmit={handleSearch} className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search enhancements..."
-                className="py-2 pl-3 pr-10 rounded-sm focus:outline-none focus:border-neon-blue w-48 bg-white/5 border border-white/10 text-white/80 neo-glass"
-              />
-              <button type="submit" className="absolute right-3 top-2.5 transition-colors text-white/60 hover:text-neon-blue">
-                <Search size={16} />
-              </button>
-            </form>
-            
-{/*             <Link to="/checkout" className="p-2 transition-colors relative text-white/70 hover:text-neon-blue">
-              <ShoppingCart size={20} />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center bg-neon-blue text-white text-xs rounded-full">
-                  {totalItems}
-                </span>
-              )}
-            </Link> */}
-            
-{/*             {isAuthenticated ? (
+            {isAuthenticated ? (
               <Link to="/profile">
                 <CyberButton size="sm" className="flex items-center gap-2">
                   <User size={16} />
@@ -90,22 +68,14 @@ const Navbar = () => {
               <Link to="/auth">
                 <CyberButton size="sm" className="flex items-center gap-2">
                   <User size={16} />
-                  <span>Sign In</span>
+                  <span>Sign In / Sign Up</span>
                 </CyberButton>
               </Link>
-            )} */}
+            )}
           </div>
           
           <div className="flex items-center md:hidden space-x-4">
-{/*             <Link to="/checkout" className="p-2 transition-colors relative text-white/70 hover:text-neon-blue">
-              <ShoppingCart size={20} />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center bg-neon-blue text-white text-xs rounded-full">
-                  {totalItems}
-                </span>
-              )}
-            </Link> */}
-{/*              {isAuthenticated ? (
+            {isAuthenticated ? (
               <Link to="/profile">
                 <CyberButton size="sm" className="flex items-center gap-2">
                   <User size={16} />
@@ -116,11 +86,10 @@ const Navbar = () => {
               <Link to="/auth">
                 <CyberButton size="sm" className="flex items-center gap-2">
                   <User size={16} />
-                  <span>Sign In</span>
+                  <span>Sign In / Sign Up</span>
                 </CyberButton>
               </Link>
-            )} */}
-            
+            )}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-white p-2"
@@ -166,7 +135,7 @@ const Navbar = () => {
               ) : (
                 <Link to="/auth" className="p-2 flex items-center gap-2 transition-colors text-white/70 hover:text-neon-blue">
                   <User size={20} />
-                  <span>Sign In</span>
+                  <span>Sign In / Sign Up</span>
                 </Link>
               )}
             </div>

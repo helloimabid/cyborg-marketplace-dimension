@@ -4,6 +4,7 @@ import { ChevronRight, Star, Shield, Zap, Heart, ShoppingCart, Share2, PlusCircl
 import { cn } from '@/lib/utils';
 import GlitchText from '@/components/GlitchText';
 import CyberButton from '@/components/CyberButton';
+import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/contexts/CartContext';
 import { toast } from 'sonner';
 
@@ -106,7 +107,7 @@ export const productCatalog = [
       'Compatible with all blood types and immune systems',
     ],
     images: [
-      'https://images.unsplash.com/photo-1634326599007-a108c3f5805e?q=80&w=1528&auto=format&fit=crop',
+      'https://emag.medicalexpo.com/wp-content/uploads/sites/9/robotic-heart.jpg',
       'https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1470&auto=format&fit=crop',
     ],
     colors: [
@@ -143,7 +144,7 @@ export const productCatalog = [
       'Waterproof and EMP resistant',
     ],
     images: [
-      'https://images.unsplash.com/photo-1624958723421-58ee9192bd54?q=80&w=1471&auto=format&fit=crop',
+      'https://cdn.thingiverse.com/assets/81/17/d0/27/6c/large_display_Mano_9.png',
       'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1470&auto=format&fit=crop',
     ],
     colors: [
@@ -468,19 +469,26 @@ const ProductView = () => {
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Placeholder for related products */}
-            <div className="h-64 neo-glass rounded-lg border border-white/10 flex items-center justify-center">
-              <span className="text-white/30">Related Product 1</span>
-            </div>
-            <div className="h-64 neo-glass rounded-lg border border-white/10 flex items-center justify-center">
-              <span className="text-white/30">Related Product 2</span>
-            </div>
-            <div className="h-64 neo-glass rounded-lg border border-white/10 flex items-center justify-center">
-              <span className="text-white/30">Related Product 3</span>
-            </div>
-            <div className="h-64 neo-glass rounded-lg border border-white/10 flex items-center justify-center">
-              <span className="text-white/30">Related Product 4</span>
-            </div>
+            {productCatalog
+              .filter(p => p.id !== product.id) // Exclude current product
+              .sort((a, b) => {
+                // Prioritize products from the same category
+                if (a.category === product.category && b.category !== product.category) return -1;
+                if (a.category !== product.category && b.category === product.category) return 1;
+                return 0;
+              })
+              .slice(0, 4) // Show at most 4 related products
+              .map(relatedProduct => (
+                <ProductCard
+                  key={relatedProduct.id}
+                  id={relatedProduct.id}
+                  name={relatedProduct.name}
+                  category={relatedProduct.category}
+                  price={relatedProduct.price}
+                  imageSrc={relatedProduct.images[0]}
+                  description={relatedProduct.description}
+                />
+              ))}
           </div>
         </div>
       </div>

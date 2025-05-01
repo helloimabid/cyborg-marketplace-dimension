@@ -33,7 +33,7 @@ const products = [
     name: 'CardioSync Pro',
     category: 'Cardiovascular',
     price: 32750,
-    imageSrc: 'https://i.ibb.co.com/8Lk6KjDM/Chat-GPT-Image-Apr-2-2025-04-54-34-PM.png',
+    imageSrc: 'https://emag.medicalexpo.com/wp-content/uploads/sites/9/robotic-heart.jpg',
     description: 'Artificial heart with nanobots for continuous maintenance and 150 year operational lifespan.',
     rating: 4.8,
     tags: ['medical', 'premium', 'longevity']
@@ -43,7 +43,7 @@ const products = [
     name: 'ExoHand Genesis',
     category: 'Limb Enhancement',
     price: 14999,
-    imageSrc: 'https://images.unsplash.com/photo-1624958723421-58ee9192bd54?q=80&w=1471&auto=format&fit=crop',
+    imageSrc: 'https://cdn.thingiverse.com/assets/81/17/d0/27/6c/large_display_Mano_9.png',
     description: 'Carbon fiber prosthetic with haptic feedback and 500kg grip strength.',
     rating: 4.6,
     tags: ['strength', 'dexterity', 'industrial']
