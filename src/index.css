@@ -74,8 +74,6 @@
   }
 }
 
-/* ... keep existing code (component classes and other styles) */
-
 @layer components {
   .neo-glass {
     @apply backdrop-blur-md bg-black/40 border border-white/10 shadow-[0_8px_32px_rgba(30,174,219,0.2)];
@@ -148,6 +146,72 @@
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Bottom Navigation Bar */
+  .cyber-nav-bottom {
+    @apply fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center justify-center gap-2 sm:gap-4 
+           py-2 px-3 sm:px-6 rounded-full neo-glass;
+    box-shadow: 0 0 15px rgba(30, 174, 219, 0.3), 0 0 5px rgba(30, 174, 219, 0.2) inset;
+  }
+
+  .cyber-nav-item {
+    @apply relative flex flex-col items-center justify-center p-1.5 sm:p-2.5 rounded-full transition-all duration-300
+           text-white/60 hover:text-neon-blue;
+  }
+  
+  .cyber-nav-item svg {
+    @apply w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300;
+    filter: drop-shadow(0 0 0 rgba(30, 174, 219, 0));
+  }
+  
+  .cyber-nav-item:hover svg {
+    @apply transform scale-110;
+    filter: drop-shadow(0 0 3px rgba(30, 174, 219, 0.7));
+  }
+
+  .cyber-nav-item.active {
+    @apply text-neon-blue;
+  }
+
+  .cyber-nav-item.active::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full rounded-full bg-neon-blue/10
+           animate-ping opacity-70 duration-700;
+  }
+
+  .cyber-nav-item.active::after {
+    content: '';
+    @apply absolute w-1.5 h-1.5 bg-neon-blue rounded-full -bottom-1;
+    box-shadow: 0 0 8px 2px rgba(30, 174, 219, 0.7);
+    animation: pulse-nav-indicator 2s infinite;
+  }
+
+  .cyber-nav-label {
+    @apply text-[0.65rem] sm:text-xs mt-1 opacity-0 absolute -bottom-6 transition-opacity duration-300;
+  }
+  
+  .cyber-nav-item:hover .cyber-nav-label,
+  .cyber-nav-item.active .cyber-nav-label {
+    @apply opacity-100;
+  }
+  
+  .cyber-nav-bottom::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: linear-gradient(90deg, transparent, rgba(30, 174, 219, 0.1), transparent);
+    animation: nav-glow 4s linear infinite;
+  }
+
+  @keyframes pulse-nav-indicator {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.7; }
+  }
+
+  @keyframes nav-glow {
+    0% { background-position: -200px 0; }
+    100% { background-position: 200px 0; }
   }
 }
 

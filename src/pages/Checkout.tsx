@@ -24,6 +24,7 @@ const Checkout = () => {
   
   const { cartItems, subtotal, clearCart, removeFromCart, updateQuantity } = useCart();
   
+  
   // Check if user is authenticated
   const isAuthenticated = localStorage.getItem('cybertech_user') !== null;
   if (!isAuthenticated) {

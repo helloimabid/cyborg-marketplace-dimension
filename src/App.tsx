@@ -7,6 +7,7 @@ import ProductView from '@/pages/ProductView';
 import ProductConfigure from '@/pages/ProductConfigure';
 import Checkout from '@/pages/Checkout';
 import Navbar from '@/components/Navbar';
+import BottomNav from '@/components/BottomNav';
 import Footer from '@/components/Footer';
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
 import { CartProvider } from '@/contexts/CartContext';
@@ -24,6 +25,7 @@ import Security from '@/pages/Security';
 import LoadingPage from '@/components/LoadingPage';
 import { AnimatePresence, motion } from "framer-motion";
 import PageTransition from '@/components/PageTransition';
+
 
 // Protected route component
 const ProtectedRoute = ({ element }) => {
@@ -65,6 +67,7 @@ const AppContent = () => {
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={location.pathname}
+            className="min-h-screen pt-24 pb-20" // Added pb-20 to give space for the bottom nav
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -83,6 +86,7 @@ const AppContent = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/search" element={<SearchResults />} />
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/checkout" element={<Checkout />} />
                 {/* Legal Pages */}
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
@@ -95,6 +99,7 @@ const AppContent = () => {
             </PageTransition>
           </motion.div>
         </AnimatePresence>
+        <BottomNav />
         <Footer />
       </Router>
     </CartProvider>
