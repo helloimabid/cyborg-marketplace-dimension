@@ -67,7 +67,7 @@ const AppContent = () => {
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={location.pathname}
-            className="min-h-screen pt-24 pb-20" // Added pb-20 to give space for the bottom nav
+            className="min-h-screen pb-24" // Increased bottom padding to account for the nav
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

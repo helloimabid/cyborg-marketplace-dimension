@@ -39,63 +39,63 @@ const Navbar = () => {
   
   return (
     <header className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-2",
       isScrolled ? "backdrop-blur-md bg-black/60 shadow-lg shadow-neon-blue/10" : "bg-transparent"
     )}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold relative text-white">
+          <Link to="/" className="text-2xl font-bold relative text-white mr-4">
             <span className="text-neon-blue">CYBER</span>TECH
             <span className="absolute -top-1 -right-4 text-xs text-neon-purple">2100</span>
           </Link>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="flex items-center transition-colors text-white/70 hover:text-white">Home</Link>
-            <Link to="/products" className="flex items-center transition-colors text-white/70 hover:text-white">Products</Link>
-            <Link to="/about" className="flex items-center transition-colors text-white/70 hover:text-white">About</Link>
-            <Link to="/contact" className="flex items-center transition-colors text-white/70 hover:text-white">Contact</Link>
+            <Link to="/" className="flex items-center transition-colors text-white/70 hover:text-white text-sm">Home</Link>
+            <Link to="/products" className="flex items-center transition-colors text-white/70 hover:text-white text-sm">Products</Link>
+            <Link to="/about" className="flex items-center transition-colors text-white/70 hover:text-white text-sm">About</Link>
+            <Link to="/contact" className="flex items-center transition-colors text-white/70 hover:text-white text-sm">Contact</Link>
           </nav>
           
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center">
             {isAuthenticated ? (
               <Link to="/profile">
-                <CyberButton size="sm" className="flex items-center gap-2">
-                  <User size={16} />
+                <CyberButton size="sm" className="flex items-center gap-2 py-1.5 text-sm">
+                  <User size={14} />
                   <span>Profile</span>
                 </CyberButton>
               </Link>
             ) : (
               <Link to="/auth">
-                <CyberButton size="sm" className="flex items-center gap-2">
-                  <User size={16} />
+                <CyberButton size="sm" className="flex items-center gap-2 py-1.5 text-sm">
+                  <User size={14} />
                   <span>Sign In / Sign Up</span>
                 </CyberButton>
               </Link>
             )}
           </div>
           
-          <div className="flex items-center md:hidden space-x-4">
+          <div className="flex items-center md:hidden">
             {isAuthenticated ? (
               <Link to="/profile">
-                <CyberButton size="sm" className="flex items-center gap-2">
-                  <User size={16} />
+                <CyberButton size="sm" className="flex items-center gap-1 px-2 py-1 text-xs">
+                  <User size={14} />
                   <span>Profile</span>
                 </CyberButton>
               </Link>
             ) : (
               <Link to="/auth">
-                <CyberButton size="sm" className="flex items-center gap-2">
-                  <User size={16} />
-                  <span>Sign In / Sign Up</span>
+                <CyberButton size="sm" className="flex items-center gap-1 px-2 py-1 text-xs">
+                  <User size={14} />
+                  <span>Sign In</span>
                 </CyberButton>
               </Link>
             )}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white p-2"
+              className="text-white p-1 ml-2"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
