@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Preserve hash in URL when redirecting
+    var pathSegmentsToKeep = 0;
+    var l = window.location;
+    var redirectUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + 
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash;
+    
+    // Redirect to the base URL to let the HashRouter handle routing
+    window.location.href = redirectUrl;
+  </script>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+  <a href="/">Click here if you are not redirected automatically</a>
+</body>
+</html>
