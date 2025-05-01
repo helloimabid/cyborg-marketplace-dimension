@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Toaster } from 'sonner';
@@ -24,6 +23,7 @@ import NeuralInterface from '@/pages/NeuralInterface';
 import Security from '@/pages/Security';
 import LoadingPage from '@/components/LoadingPage';
 import { AnimatePresence, motion } from "framer-motion";
+import PageTransition from '@/components/PageTransition';
 
 // Protected route component
 const ProtectedRoute = ({ element }) => {
@@ -70,27 +70,29 @@ const AppContent = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
           >
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Index />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/products/:category" element={<Products />} />
-              <Route path="/product/:productId" element={<ProductView />} />
-              <Route path="/product-configure/:productId" element={<ProductConfigure />} />
-              <Route path="/checkout" element={<ProtectedRoute element={<Checkout />} />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/search" element={<SearchResults />} />
-              <Route path="/auth" element={<Auth />} />
-              {/* Legal Pages */}
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/cookies" element={<Cookies />} />
-              <Route path="/licensing" element={<Licensing />} />
-              {/* Additional Pages */}
-              <Route path="/neural-interface" element={<NeuralInterface />} />
-              <Route path="/security" element={<Security />} />
-            </Routes>
+            <PageTransition>
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Index />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:category" element={<Products />} />
+                <Route path="/product/:productId" element={<ProductView />} />
+                <Route path="/product-configure/:productId" element={<ProductConfigure />} />
+                <Route path="/checkout" element={<ProtectedRoute element={<Checkout />} />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/search" element={<SearchResults />} />
+                <Route path="/auth" element={<Auth />} />
+                {/* Legal Pages */}
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/cookies" element={<Cookies />} />
+                <Route path="/licensing" element={<Licensing />} />
+                {/* Additional Pages */}
+                <Route path="/neural-interface" element={<NeuralInterface />} />
+                <Route path="/security" element={<Security />} />
+              </Routes>
+            </PageTransition>
           </motion.div>
         </AnimatePresence>
         <Footer />

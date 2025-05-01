@@ -437,24 +437,28 @@ const ProductView = () => {
             </ul>
           </div>
           
-          <div className="neo-glass p-6 border border-neon-blue/20 rounded-lg">
-            <h3 className="text-xl font-bold mb-4 text-white">Technical Specifications</h3>
+          <div className="neo-glass p-6 border border-neon-blue/30 rounded-lg shadow-lg shadow-neon-blue/5 backdrop-blur-sm relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 to-transparent pointer-events-none"></div>
+            <h3 className="text-xl font-bold mb-8 text-white relative">Technical Specifications</h3>
             
-            <div className="space-y-4">
-              {Object.entries(product.technicalSpecs).map(([key, value]) => (
-                <div key={key} className="flex justify-between">
-                  <span className="text-white/60">{key.charAt(0).toUpperCase() + key.slice(1)}</span>
-                  <span className="text-white">{value}</span>
+            <div className="space-y-0">
+              {Object.entries(product.technicalSpecs).map(([key, value], index, arr) => (
+                <div key={key} className="group py-3.5 hover:bg-white/5 transition-colors duration-200 px-2 -mx-2 rounded">
+                  <div className="flex justify-between items-center">
+                    <div className="text-white/70 font-medium">{key.charAt(0).toUpperCase() + key.slice(1)}</div>
+                    <div className="text-neon-blue font-medium ml-4 text-right">{value}</div>
+                  </div>
+                  {index < arr.length - 1 && <div className="border-t border-white/10 mt-3.5"></div>}
                 </div>
               ))}
             </div>
             
-            <div className="mt-6 pt-6 border-t border-white/10">
-              <div className="flex items-start">
-                <div className="text-yellow-500">
+            <div className="mt-8 pt-6 border-t border-white/20">
+              <div className="flex items-start p-3 bg-yellow-500/10 rounded-md">
+                <div className="text-yellow-500 flex-shrink-0 mt-0.5">
                   <AlertTriangle size={20} />
                 </div>
-                <p className="ml-3 text-white/60 text-sm">
+                <p className="ml-3 text-white/70 text-sm">
                   Installation must be performed by a certified CYBERTECH technician. Unauthorized installation will void warranty.
                 </p>
               </div>
