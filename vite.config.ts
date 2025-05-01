@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  base: "./", // Add this line to ensure relative paths for assets
   plugins: [
     react(),
     mode === 'development' &&
