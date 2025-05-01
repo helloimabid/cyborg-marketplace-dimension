@@ -22,6 +22,7 @@ import Cookies from '@/pages/Cookies';
 import Licensing from '@/pages/Licensing';
 import NeuralInterface from '@/pages/NeuralInterface';
 import Security from '@/pages/Security';
+import NotFound from '@/pages/NotFound';
 import LoadingPage from '@/components/LoadingPage';
 import { AnimatePresence, motion } from "framer-motion";
 import PageTransition from '@/components/PageTransition';
@@ -93,6 +94,8 @@ const AppContent = () => {
               {/* Additional Pages */}
               <Route path="/neural-interface" element={<NeuralInterface />} />
               <Route path="/security" element={<Security />} />
+              {/* 404 Route - Must be last */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </PageTransition>
         </motion.div>
